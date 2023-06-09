@@ -43,29 +43,70 @@
 // потом вводим переменную для суммы и складываем вам только теэлемены массива индексы которого нечетные
 // ________________________________________________________
 
-int [] array = new int [4];
-Console.Write("[");
+// int [] array = new int [4];
+// Console.Write("[");
 
-for(int i = 0; i < array.Length; i++)
+// for(int i = 0; i < array.Length; i++)
+// {
+//     array[i] = new Random().Next(0,1000);
+//     Console.Write(array[i]+",");
+// }
+// Console.Write("]");
+
+// int sumnoteven = 0;
+// for(int i = 1; i < array.Length; i+=2)
+
+//     sumnoteven=sumnoteven+array[i];
+
+// Console.Write("Сумаа  чисел на не четных позициях в массиве =" + sumnoteven);
+
+
+
+
+
+
+
+
+// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и 
+// минимальным элементов массива.
+// [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76  задать массив с помощью рандома=>
+// создать преременную максимум =>найти максимум перебором=>
+// создать преременную минимму =>найти минимим перебором
+// найти разницу и выести ее=>
+
+Console.WriteLine("Введите желаемое количество элементов массива: ");
+int a = Convert.ToInt32(Console.ReadLine());
+
+double[] randomArray = new double[a];
+
+ Console.WriteLine("массив: ");
+// задаем массив методом
+void Massiv(int a)
 {
-    array[i] = new Random().Next(0,1000);
-    Console.Write(array[i]+",");
+
+for (int i = 0; i < a; i++)
+{
+randomArray[i] =(Math.Round(new Random().NextDouble(),2)+new Random().Next(1,10));
+Console.WriteLine(randomArray[i] ); 
 }
-Console.Write("]");
+// мат рандом позволяет обрезать числа после запятой в ашем случае 2 плюс рандомный масив что бы числа были в диапазоне больше 1
+}
 
-int sumnoteven = 0;
-for(int i = 1; i < array.Length; i+=2)
+double  Difference(double[] randomArray)
+{
+double min = randomArray[0];
+double max = randomArray[0];
+int i = 1;
+while (i < randomArray.Length)
+{
+if (max<randomArray[i])
+max = randomArray[i];
+if (min>randomArray[i])
+min = randomArray[i];
+i = i + 1;
+}
+return max-min;
+}
 
-    sumnoteven=sumnoteven+array[i];
-
-Console.Write("Сумаа  чисел на не четных позициях в массиве =" + sumnoteven);
-
-
-
-
-
-
-
-
-// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-// [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
+Massiv(a);
+Console.WriteLine($"\nРазница между максимальным и минимальным элементов массива = {Difference(randomArray):F2}");
